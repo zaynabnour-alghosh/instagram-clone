@@ -66,29 +66,29 @@ class UserController extends Controller
         }   
     }
 
-    public function viewFollowingsPosts(Request $request)
-    {
-    $token = $request->token;
-    $user_id = Auth::getPayload($token)->get('sub');
-    $user = User::find($user_id);
-    $followings = Follow::where('follower_id' ,$user_id)->pluck('following_id');
-    if ($followings) {
-        foreach ($followings as $fid) {
-            $posts[] = Post::where('user_id', $fid)->with("User")->get();
+    public function viewFollowingsPosts(Request $request){
+        $token = $request->token;
+        $user_id = Auth::getPayload($token)->get('sub');
+        $user = User::find($user_id);
+        $followings = Follow::where('follower_id' ,$user_id)->pluck('following_id');
+        if ($followings) {
+            foreach ($followings as $fid) {
+                $posts[] = Post::where('user_id', $fid)->with("User")->get();
+            }
+            return response()->json(['posts' => $posts]);
         }
-         return response()->json(['posts' => $posts]);
-    }
-   
-    else{
-        return response()->json(['error' => 'Unauthorized'], 401);
-    }     
-    }
+    
+        else{
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }     
+        }
 
     public function viewMyPosts(Request $request){
         $token = $request->token;
         $user_id = Auth::getPayload($token)->get('sub');
         $user = User::find($user_id);
         $posts=Post::all()->where('user_id', $user_id);
+        
         return response()->json([
             'user'=>$user,
             'posts' => $posts
@@ -99,8 +99,8 @@ class UserController extends Controller
         $input = $request->input;
         $users = User::where('username', 'LIKE', "{$input}%")->get();
         $usernames = $users->pluck('username');
-        return response()->json(['users' => $usernames]);
 
+        return response()->json(['users' => $usernames]);
     }
     public function like(Request $request){
         $token = $request->token;
@@ -121,16 +121,16 @@ class UserController extends Controller
             ]);
         } else {
             $already_liked->delete();
-            $post->decrement('nb_likes');           
+            $post->decrement('nb_likes');   
+
             return response()->json([
                 'status' => 'Successful unliked',
                 'message' => $user->username . ' unliked this post of id ' . $post_id
             ]);
         }
-        
     }
 
-    function createPost(Request $request) {
+    function createPost(Request $request){
         $token = $request->token;
         $user_id = Auth::getPayload($token)->get('sub');
         $imageBase64=$request->imageBase64;
@@ -143,7 +143,7 @@ class UserController extends Controller
         $post->nb_likes = 0;
         $post->caption = $request->caption;
         $post->save();
-    
+
         return response()->json([
             'status' => 'Successful create of post',
             'data' => $post

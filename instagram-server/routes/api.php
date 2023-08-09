@@ -20,7 +20,6 @@ Route::group(["middleware" => "auth:api"], function(){
         Route::post("createPost", [UserController::class, "createPost"]);
  
     });
-
 });
 
 //Unauthenticated APIS
