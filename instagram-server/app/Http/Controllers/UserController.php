@@ -54,7 +54,6 @@ class UserController extends Controller
         $following_id = $following->id;
         $already_followed = Follow::where("follower_id", $user_id)->where("following_id", $following_id)->first();
         if ($already_followed) {
-            // return response()->json(['status'=>'success']);
             $following_posts = $following-> Posts()->with("User")->get();
             return response()->json([
                 "status" => "success", 
@@ -75,5 +74,16 @@ class UserController extends Controller
         }
     }
     return response()->json(['posts' => $posts]);   
+    }
+
+    public function viewMyPosts(Request $request){
+        $token = $request->token;
+        $user_id = Auth::getPayload($token)->get('sub');
+        $user = User::find($user_id);
+        $posts=Post::all()->where('user_id', $user_id);
+        return response()->json([
+            'user'=>$user,
+            'posts' => $posts
+        ]); 
     }
 }
