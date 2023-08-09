@@ -8,39 +8,58 @@ use App\Models\User;
 use App\Models\Follow;
 use App\Models\Account;
 
+
 class UserController extends Controller
 {
     public function follow(Request $request){
         $token = $request->token;
         $user_id = Auth::getPayload($token)->get('sub');
         $user = User::find($user_id);
-        $follower = User::where('username',$request->username)->first();        
-        $follower_id = $follower->id;
-        $already_followed = Follow::where("follower_id", $user_id)->where("following_id", $follower_id)->first();    
-        $follower_account = Account ::where("user_id",$follower_id)->first();
+        $following = User::where('username',$request->username)->first();        
+        $following_id = $following->id;
+        $already_followed = Follow::where("follower_id", $user_id)->where("following_id", $following_id)->first();    
+        $following_account = Account ::where("user_id",$following_id)->first();
         $user_account = Account::where("user_id",$user_id)->first();
         if (!$already_followed) {
             $follow = new Follow;
             $follow->follower_id = $user_id;
-            $follow->following_id = $follower_id;
+            $follow->following_id = $following_id;
             $follow->save();            
             $user_account->increment('nb_followings');
-            $follower_account->increment('nb_followers');
+            $following_account->increment('nb_followers');
             return response()->json([
                 'status' => 'Successful follow',
                 'user' => $user,
-                'follower' => $follower,
-                'message' => $user->username . ' is following ' . $follower->username
+                'following' => $following,
+                'message' => $user->username . ' is following ' . $following->username
             ]);
         } else {
             $already_followed->delete();
             $user_account->decrement('nb_followings');
-            $follower_account->decrement('nb_followers');
+            $following_account->decrement('nb_followers');
             return response()->json([
                 'status' => 'Successful unfollow',
-                'message' => $user->username . ' unfollowed ' . $follower->username
+                'message' => $user->username . ' unfollowed ' . $following->username
             ]);
         }
         
     }
+
+    public function viewFollowingPosts($username, Request $request){
+        $token = $request->token;
+        $user_id = Auth::getPayload($token)->get('sub');
+        $user = User::find($user_id);
+        $following = User::where('username',$username)->first();        
+        $following_id = $following->id;
+        $already_followed = Follow::where("follower_id", $user_id)->where("following_id", $following_id)->first();
+        if ($already_followed) {
+            // return response()->json(['status'=>'success']);
+            $following_posts = $following-> Posts()->with("User")->get();
+            return response()->json([
+                "status" => "success", 
+                "data" => $following_posts
+            ]);
+        }   
+    }
+
 }
