@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Account;
 
 class AuthController extends Controller
 {
@@ -27,9 +28,7 @@ class AuthController extends Controller
         }
 
         $user = Auth::user();
-        $user->token = $token;
-        $user->role = $user->user_type_id == 1 ? "admin" : "user";
-        
+        $user->token = $token;        
         return response()->json([
                 'status' => 'Success',
                 'data' => $user
@@ -52,12 +51,23 @@ class AuthController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
+
         $token = Auth::login($user);
         $user->token = $token;
+        $account = new Account; 
+        $account->user_id = $user->id;
+        $account->image_url= "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
+        $account->bio = ' ';
+        $account->nb_followers=0;
+        $account->nb_followings=0;
+        $account->nb_posts=0;
+        $account->save();       
+        
 
         return response()->json([
             'status' => 'Success',
-            'data' => $user
+            'data' => $user,
+            'account' => $account
         ]);
     }
 
