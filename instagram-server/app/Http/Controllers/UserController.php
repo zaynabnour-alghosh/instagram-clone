@@ -134,6 +134,7 @@ class UserController extends Controller
         $post->user_id=$user_id;
         $post->image_url = $filename;
         $post->nb_likes = 0;
+        $post->caption = $request->caption;
         $post->save();
     
         return response()->json([
