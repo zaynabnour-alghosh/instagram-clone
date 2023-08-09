@@ -60,6 +60,9 @@ class UserController extends Controller
                 "status" => "success", 
                 "data" => $following_posts
             ]);
+        }
+        else{
+            return response()->json(['error' => 'Unauthorized'], 401);
         }   
     }
 
@@ -73,8 +76,12 @@ class UserController extends Controller
         foreach ($followings as $fid) {
             $posts[] = Post::where('user_id', $fid)->with("User")->get();
         }
+         return response()->json(['posts' => $posts]);
     }
-    return response()->json(['posts' => $posts]);   
+   
+    else{
+        return response()->json(['error' => 'Unauthorized'], 401);
+    }     
     }
 
     public function viewMyPosts(Request $request){

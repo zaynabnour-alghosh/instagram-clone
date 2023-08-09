@@ -9,6 +9,15 @@ use App\Models\Account;
 
 class AuthController extends Controller
 {
+
+
+    public function unauthorized(Request $request){
+        return response()->json([
+            'status' => 'Error',
+            'message' => 'Unauthorized',
+        ], 200);
+    }
+    
     public function login(Request $request){
         $request->validate([
             'email' => 'required|string|email',
