@@ -15,7 +15,9 @@ Route::group(["middleware" => "auth:api"], function(){
         Route::get("posts/{following_username}", [UserController::class, "viewFollowingPosts"]);
         Route::post("posts", [UserController::class, "viewFollowingsPosts"]);
         Route::get("myPosts", [UserController::class, "viewMyPosts"]);
-        Route::post("users", [UserController::class, "searchUsers"]); 
+        Route::post("users", [UserController::class, "searchUsers"]);
+        Route::post("like", [UserController::class, "like"]);
+ 
     });
 
 });

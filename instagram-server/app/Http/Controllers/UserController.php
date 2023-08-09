@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Follow;
 use App\Models\Account;
 use App\Models\Post;
+use App\Models\Like;
 
 
 class UserController extends Controller
@@ -94,4 +95,39 @@ class UserController extends Controller
         return response()->json(['users' => $usernames]);
 
     }
+    public function like(Request $request){
+        $token = $request->token;
+        $user_id = Auth::getPayload($token)->get('sub');
+        $user = User::find($user_id);
+        $post_id = $request->id;
+        $post = Post::find($post_id);      
+        $already_liked = Like::where("user_id", $user_id)->where("post_id", $post_id)->first();     
+        if (!$already_liked) {
+            $like = new Like;
+            $like->user_id = $user_id;
+            $like->post_id = $post_id;
+            $like->save();            
+            $post->increment('nb_likes');
+            return response()->json([
+                'status' => 'Successful like',
+                'message' => $user->username . ' liked this post of id ' . $post_id
+            ]);
+        } else {
+            $already_liked->delete();
+            $post->decrement('nb_likes');           
+            return response()->json([
+                'status' => 'Successful unliked',
+                'message' => $user->username . ' unliked this post of id ' . $post_id
+            ]);
+        }
+        
+    }
+
+
+
+
+
+
+
+
 }
