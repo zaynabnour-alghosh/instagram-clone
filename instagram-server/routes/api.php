@@ -13,7 +13,7 @@ Route::group(["middleware" => "auth:api"], function(){
         Route::post("logout", [AuthController::class, "logout"]);
         Route::post("follow", [UserController::class, "follow"]);
         Route::get("posts/{following_username}", [UserController::class, "viewFollowingPosts"]);
-
+        Route::post("posts", [UserController::class, "viewFollowingsPosts"]);
     });
 
 });
