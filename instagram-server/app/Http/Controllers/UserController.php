@@ -123,11 +123,22 @@ class UserController extends Controller
         
     }
 
-
-
-
-
-
-
-
+    function createPost(Request $request) {
+        $token = $request->token;
+        $user_id = Auth::getPayload($token)->get('sub');
+        $imageBase64=$request->imageBase64;
+        $image = base64_decode(imageBase64);    
+        $filename = uniqid() . '.jpg';    
+        Storage::disk('public')->put($filename, $imageData);    
+        $post = new Post;
+        $post->user_id=$user_id;
+        $post->image_url = $filename;
+        $post->nb_likes = 0;
+        $post->save();
+    
+        return response()->json([
+            'status' => 'Successful create of post',
+            'data' => $post
+        ]);
+    }
 }

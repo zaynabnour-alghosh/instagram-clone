@@ -17,6 +17,7 @@ Route::group(["middleware" => "auth:api"], function(){
         Route::get("myPosts", [UserController::class, "viewMyPosts"]);
         Route::post("users", [UserController::class, "searchUsers"]);
         Route::post("like", [UserController::class, "like"]);
+        Route::post("createPost", [UserController::class, "createPost"]);
  
     });
 
