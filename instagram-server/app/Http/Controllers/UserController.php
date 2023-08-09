@@ -86,4 +86,12 @@ class UserController extends Controller
             'posts' => $posts
         ]); 
     }
+
+    public function searchUsers(Request $request){
+        $input = $request->input;
+        $users = User::where('username', 'LIKE', "{$input}%")->get();
+        $usernames = $users->pluck('username');
+        return response()->json(['users' => $usernames]);
+
+    }
 }
