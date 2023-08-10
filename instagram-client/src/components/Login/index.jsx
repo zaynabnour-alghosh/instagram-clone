@@ -22,7 +22,7 @@ const Login=()=>{
                 const userData=result.data
                 const token=userData.token
                 localStorage.setItem("token",token);
-                navigate('/');
+                navigate('/home');
             }
            
             

@@ -8,15 +8,18 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 // import SideBar from './components/SideBar';
 // import PostCard from './components/PostCard';
-// import Home from './components/Home'; 
+import Home from './components/Home'; 
 import { BrowserRouter,Route,Routes } from 'react-router-dom';
 
 function App() {
+  // const token=localStorage.getItem("token")
+  // console.log(token)
   return (
     <BrowserRouter>
       <Routes>
       <Route path='/' element={<Login />} />
       <Route path='/signup' element={<Signup />} />
+      <Route path='/home' element={<Home />} />
       </Routes>    
     </BrowserRouter>
     // {/* <Login />   */}

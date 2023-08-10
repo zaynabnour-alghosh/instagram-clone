@@ -8,7 +8,7 @@ import profileIcon from '../../images/pro.png';
 const SideBar=()=>{
     return (
         <div className="sidebar">
-           <div className="container">
+           <div className="sidebar-container">
             <div className="header">
             <img src={instaName} alt="" />
             </div>
