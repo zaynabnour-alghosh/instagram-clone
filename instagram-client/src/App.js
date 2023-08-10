@@ -1,5 +1,6 @@
 import './App.css';
-import NewPost from './components/NewPost';
+import Profile from './components/Profile';
+// import NewPost from './components/NewPost';
 // import SearchList from './components/SearchList';
 // import ElemetSearch from './components/ElementSearch';
 // import Login from './components/Login';
@@ -18,7 +19,8 @@ function App() {
     {/* <Home /> */}
     {/* <ElemetSearch/> */}
     {/* <SearchList /> */}
-    <NewPost />
+    {/* <NewPost /> */}
+    <Profile />
     </div>
   );
 }
