@@ -1,0 +1,13 @@
+.allPosts{
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+}
+.post{
+    display: flex;
+    flex-direction: column;
+    gap:50px;
+    align-items: center;
+    justify-content:center;
+}
