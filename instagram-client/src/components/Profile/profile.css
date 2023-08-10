@@ -11,6 +11,7 @@
     background-color: rgb(179, 179, 238);
     width: 100%;
     padding:30px;
+    justify-content: center;
 }
 .picpro img{
     height:100px;

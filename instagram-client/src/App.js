@@ -1,5 +1,6 @@
 import './App.css';
-import Profile from './components/Profile';
+import Account from './components/Account';
+// import Profile from './components/Profile';
 // import NewPost from './components/NewPost';
 // import SearchList from './components/SearchList';
 // import ElemetSearch from './components/ElementSearch';
@@ -20,7 +21,8 @@ function App() {
     {/* <ElemetSearch/> */}
     {/* <SearchList /> */}
     {/* <NewPost /> */}
-    <Profile />
+    {/* <Profile /> */}
+    <Account />
     </div>
   );
 }

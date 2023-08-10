@@ -1,0 +1,41 @@
+.pContent{
+    display: flex;
+    width: 100vw;
+    flex-direction: row;
+    justify-content: center;
+}
+.pleft{
+    height:1px;
+    background-color: black;
+    width:100%;
+}
+.p{
+    height: 50px;
+    border-top: 2px;
+    border-color: black;
+    border-style: solid;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    width: 150px;
+    text-align: center;
+
+}
+.pright{
+    height:1px;
+    background-color: black;
+    width:100%;
+}
+.posts{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap:20px;
+    width: 100%;
+}
+.posts img{
+    width: 600px;
+    height: 600px;
+    object-fit: cover;
+
+}
