@@ -1,0 +1,36 @@
+.elemet{
+    width:400px;
+    height: 250px;
+    display: flex;
+    margin:10px;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+    gap:20px;
+    align-items: center;
+    margin:2px;
+    padding:10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    gap:8 px;
+
+}
+.row img{   
+        height:60px;
+        border-radius:50%;
+        object-fit:cover;
+    
+}
+.details{
+    font-size: 12px;
+}
+.uName{
+    font-size: 24px;
+    font-weight: 500;
+}
