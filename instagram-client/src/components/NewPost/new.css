@@ -27,7 +27,7 @@
     background-color: rgba(0,0,0, 0.6);
 }
   
-.form-container {
+.post-form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,8 +38,7 @@
 .buttons-container{
     display: flex;
     margin-left:45px;
-    margin-top: 50px;
-    gap:30px;
+    gap: 55px;
     
 }
 button{
@@ -63,7 +62,7 @@ button:hover{
     background-color:rgb(5, 111, 181);
 }
 
-input{
+.x{
     height: 30px;
     background-color:  rgb(250, 250, 250);
     font-size: 14px;
@@ -75,7 +74,7 @@ input{
     padding-left:10px;
    
   }
-input:focus{
+.x:focus{
     outline:rgb(106, 105, 105);
     border-color: rgb(106, 105, 105);
     border-width: 1px;

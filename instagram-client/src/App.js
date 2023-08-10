@@ -1,8 +1,8 @@
 import './App.css';
-// import Account from './components/Account';
+import Account from './components/Account';
 // import Profile from './components/Profile';
-// import NewPost from './components/NewPost';
-// import SearchList from './components/SearchList';
+import NewPost from './components/NewPost';
+import SearchList from './components/SearchList';
 // import ElemetSearch from './components/ElementSearch';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -20,6 +20,10 @@ function App() {
       <Route path='/' element={<Login />} />
       <Route path='/signup' element={<Signup />} />
       <Route path='/home' element={<Home />} />
+      <Route path='/search' element={<SearchList />} />
+      <Route path='/createPost' element={<NewPost />} />
+      <Route path='/profile' element={<Account/>} />
+
       </Routes>    
     </BrowserRouter>
     // {/* <Login />   */}

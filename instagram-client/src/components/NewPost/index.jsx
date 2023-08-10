@@ -9,13 +9,13 @@ const NewPost = () =>{
       className="modal"
       overlayClassName="overlay"
     >
-      <div className='form-container'>
+      <div className='post-form-container'>
           <div className='rowP'>
             <label>Post</label>
-            <input type='file'/>
+            <input className='x' type='file'/>
           </div>
           <div className="rowP">
-            <input type='text' placeholder='Caption'/>
+            <input type='text' className='x' placeholder='Caption'/>
           </div>
       </div>
       <div className='buttons-container'>

@@ -43,3 +43,7 @@
 .icon:hover{
     background-color:  rgb(242, 238, 238);
 }
+.icon a{
+    text-decoration: none;
+    color:black;
+}
