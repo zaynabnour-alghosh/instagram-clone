@@ -1,5 +1,6 @@
 import './App.css';
-import SearchList from './components/SearchList';
+import NewPost from './components/NewPost';
+// import SearchList from './components/SearchList';
 // import ElemetSearch from './components/ElementSearch';
 // import Login from './components/Login';
 // import Signup from './components/Signup';
@@ -16,7 +17,8 @@ function App() {
     {/* <PostCard /> */}
     {/* <Home /> */}
     {/* <ElemetSearch/> */}
-    <SearchList />
+    {/* <SearchList /> */}
+    <NewPost />
     </div>
   );
 }
