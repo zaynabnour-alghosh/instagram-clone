@@ -1,6 +1,6 @@
 import React from "react";
 import "./login.css";
-import instaName from '../../images/name.png';
+import  from '../../images/name.png'instaName;
 const Login=()=>{
     return (
         <div className="login">
