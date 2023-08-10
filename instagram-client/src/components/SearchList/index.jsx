@@ -1,9 +1,11 @@
 import React from "react";
 import "./seach.css";
 import ElemetSearch from "../ElementSearch";
+import SideBar from "../SideBar";
 const SearchList=()=>{
     return(
         <div className="search">
+            <SideBar />
             <div className="search-container">
                 <div className="bar">
                 <div className="rows">

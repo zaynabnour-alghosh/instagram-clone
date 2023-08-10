@@ -1,6 +1,6 @@
 .search{
     display: flex;
-    width:31%
+    width: 100%;
 }
 .search-container{
     width:100%;
@@ -21,15 +21,15 @@
     justify-content: center;
     margin-top: 20px;
 }
-.row{
-    width:100%;
+.rows{
+    width:80%;
 }
 
 .list{
     display:flex;
     flex-direction: column;
     width: 100%;
-
+    align-items: center;
 }
 input{
     height: 30px;
@@ -37,7 +37,7 @@ input{
     font-size: 14px;
     border-radius: 3px;
     border-width: 1px;
-    width:100%;
+    width:95%;
     border-style: solid;
     border-color:rgb(219, 219, 219);
     padding-left:10px;
@@ -50,6 +50,6 @@ input:focus{
 }
 
 .useri{
-    width:90%;
+    width:80%;
     
 }
