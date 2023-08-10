@@ -1,5 +1,6 @@
 import './App.css';
-import ElemetSearch from './components/ElementSearch';
+import SearchList from './components/SearchList';
+// import ElemetSearch from './components/ElementSearch';
 // import Login from './components/Login';
 // import Signup from './components/Signup';
 // import SideBar from './components/SideBar';
@@ -14,7 +15,8 @@ function App() {
     {/* <SideBar /> */}
     {/* <PostCard /> */}
     {/* <Home /> */}
-    <ElemetSearch/>
+    {/* <ElemetSearch/> */}
+    <SearchList />
     </div>
   );
 }
