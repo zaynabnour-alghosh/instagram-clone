@@ -66,22 +66,27 @@ class UserController extends Controller
         }   
     }
 
-    public function viewFollowingsPosts(Request $request){
-        $token = $request->token;
-        $user_id = Auth::getPayload($token)->get('sub');
-        $user = User::find($user_id);
-        $followings = Follow::where('follower_id' ,$user_id)->pluck('following_id');
-        if ($followings) {
-            foreach ($followings as $fid) {
-                $posts[] = Post::where('user_id', $fid)->with("User")->get();
-            }
-            return response()->json(['posts' => $posts]);
+    public function viewFollowingsPosts(Request $request)
+    {
+    $token = $request->token;
+    $user_id = Auth::getPayload($token)->get('sub');
+    $user = User::find($user_id);
+    $followings = Follow::where('follower_id' ,$user_id)->pluck('following_id');
+    if ($followings) {
+        $posts = [];
+        foreach ($followings as $fid) {
+            $posts[] = Post::where('user_id', $fid)->with("User")->get();
+            
         }
+        return response()->json(['posts' => $posts]);
+    } else{
+        return response()->json(['error' => 'Unauthorized'], 401);
+    }  
+       
+    }
     
-        else{
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }     
-        }
+          
+
 
     public function viewMyPosts(Request $request){
         $token = $request->token;
