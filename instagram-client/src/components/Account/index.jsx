@@ -1,6 +1,6 @@
 import React from "react";
 import "./account.css";
-import Profile from "../Profile";
+// import Profile from "../Profile";
 
 
 const Account=()=>{
@@ -8,7 +8,7 @@ const Account=()=>{
         <div className="acc">
             <div className="acc-container">
                 <div className="pro-content">
-                    <Profile />
+                    {/* <Profile /> */}
                 </div>
                <div className="pContent">
                 <div className="pleft"></div>
